@@ -18,6 +18,7 @@
     "sweetalert": "^2.1.2",
     "sweetalert2": "^10.12.7",
     "sweetalert2-react-content": "^3.2.2",
+    "use-sound": "^2.0.1",
     "uuid": "^8.3.2",
     "web-vitals": "^0.2.4"
   },

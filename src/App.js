@@ -23,18 +23,13 @@ function App(props) {
 
   useEffect(() => {
     setSuccess(props.todoDeleted)
-  setTimeout(()=>{  props.setTodoDeleted(false)},2000)
+  // setTimeout(()=>{  props.setTodoDeleted(false)},5000)
   }, [props.todoDeleted])
 
   return (
 
     <div className="App">
       <TodoContextProvider>
-      {success && <Confetti
-        width={width}
-        height={height}/>
-    }
-       
       <NavBar />
       <TodoList />
       <TodoForm/>

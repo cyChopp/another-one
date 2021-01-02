@@ -8,9 +8,11 @@ const TodoForm = () => {
 
 const hungleSubmit =(e)=>{
     e.preventDefault();
-    console.log(title,'title')
+    
+    if(title !== ''){
     dispatch({type:'ADD_TODO',todo:{title}})
     setTitle('')
+    }
 
 }
     return <form onSubmit={hungleSubmit}>

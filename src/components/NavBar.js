@@ -6,7 +6,7 @@ const NavBar = () => {
 
     return (
         <div className='navbar'>
-            <h1>Samurai's TODO</h1>
+            <h1>Galaxy TODO</h1>
             <p>Currently you have {todo.length} TODOs</p>
         </div>
     )
