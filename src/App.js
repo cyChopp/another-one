@@ -3,16 +3,50 @@ import NavBar from './components/NavBar';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 
-function App() {
+import {useWindowSize} from 'react-use';
+import Confetti from 'react-confetti'
+import { connect } from 'react-redux';
+
+import { useEffect, useState } from 'react';
+
+import {setTodoDeleted} from './redux/confetti-reducer'
+
+
+
+function App(props) {
+
+  const [success,setSuccess] = useState(props.todoDeleted);
+
+
+
+  const {width, height} = useWindowSize();
+
+  useEffect(() => {
+    setSuccess(props.todoDeleted)
+  setTimeout(()=>{  props.setTodoDeleted(false)},2000)
+  }, [props.todoDeleted])
+
   return (
+
     <div className="App">
       <TodoContextProvider>
+      {success && <Confetti
+        width={width}
+        height={height}/>
+    }
+       
       <NavBar />
       <TodoList />
       <TodoForm/>
     </TodoContextProvider>
+    
     </div>
+
   );
 }
-
-export default App;
+const mapStateToProps =(state)=>({
+  isConfetti:state.confetti.isConfetti,
+  todoDeleted:state.confetti.todoDeleted
+  
+})
+export default connect(mapStateToProps,{setTodoDeleted})(App);
