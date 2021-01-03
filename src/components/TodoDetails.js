@@ -1,59 +1,52 @@
 import React, { useContext, useState } from "react";
 import { TodoContext } from "../contexts/TodoContext";
-import {setIsConfetti,setTodoDeleted} from "../redux/confetti-reducer"
+import { setIsConfetti, setTodoDeleted } from "../redux/confetti-reducer";
+import styles from './TodoDetails.module.css'
 
-import Swal from "sweetalert2/dist/sweetalert2.all.js";
-import "sweetalert2/dist/sweetalert2.min.css";
+import swal from "sweetalert";
 import { connect } from "react-redux";
 
-import useSound from 'use-sound';
+import useSound from "use-sound";
 
-
-const TodoDetails = (props,{todo}) => {
-
-  const [playActive] = useSound(
-    'http://www.vertigogaming.org/downloads/svencoop/sound/sc_royals/blade.wav',
+const TodoDetails = (props, { todo }) => {
+  const [
+    playActive,
+  ] = useSound(
+    "http://www.vertigogaming.org/downloads/svencoop/sound/sc_royals/blade.wav",
     { volume: 0.25 }
   );
 
   const { dispatch } = useContext(TodoContext);
 
   const handleClick = () => {
-    // Swal.fire({
-    //   title: "Did you complete this TODO?",
-    //   text: "You won't be able to revert this!",
-    //   icon: "warning",
-    //   showCancelButton: true,
-    //   confirmButtonColor: "#3085d6",
-    //   cancelButtonColor: "#d33",
-    //   confirmButtonText: "Yes, delete it!",
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
+    swal({
+      title: "Did you complete this TODO?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal("Your TODO has been deleted!", {
+          icon: "success",
+        });
 
-    //     Swal.fire("Completed!", "Your TODO has been deleted.", "success");
-
-
+        props.setTodoDeleted(true);
         
+        playActive();
 
-    //   }
-    // })
-    props.setTodoDeleted(true)
-    playActive()
+        dispatch({ type: "DELETE_TODO", id: props.todo.id });
+      }
+    });
 
-    dispatch({ type: "DELETE_TODO", id: props.todo.id });
-        
-       props.setTodoDeleted(false)
-
+    props.setTodoDeleted(false);
   };
 
   return (
-  
-   
     <li onClick={handleClick}>
-        
-      <div className="title">{props.todo.title}</div>
+      <div className={styles.title}>{props.todo.title}</div>
     </li>
-  )
-}
+  );
+};
 
-export default connect(null,{setIsConfetti,setTodoDeleted})(TodoDetails);
+export default connect(null, { setIsConfetti, setTodoDeleted })(TodoDetails);

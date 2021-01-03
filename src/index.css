@@ -1,127 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
-
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: #553055; */
   background-image: url('/src/background/1876.jpg');
-  /* background-repeat: no-repeat;
-  background-size: contain, cover; */
   height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-
-  /* overflow-y: hidden; */
+  overflow-y: hidden;
 }
 
-.App{
+.App {
   background-color: #39007396;
-  margin: 20px auto;
+  margin: 50px auto;
   width: 90%;
-  max-width: 700px;
+  max-height: 100vh;
+  max-width: 800px;
   color: #eee;
-    height: auto;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  /* overflow-y: hidden; */
-
+  overflow-y: hidden;
   border: 3px solid #f7078c;
   border-radius: 10px;
   box-shadow: 1px 1px 30px #f7078c;
+}
 
-}
-.navbar{
-  padding:10px 20px;
-  border-radius: 6px;
-
-  text-align: center;
-  background: #29004cad;
-}
-.navbar h1{
-  margin: 10px 0;
-    padding-bottom: 10px !important;
-    color:  #f7078c !important;
-    font-family: "Permanent Marker", cursive !important;
-    text-shadow: 2px 4px #871287 !important;
-    font-weight: 900 !important;
-    font-size: 40px !important;
-    padding: 0px 10px 0px 10px;
-  
-}
-.navbar p{
-  color:  #f7078c !important;
-    font-family: "Permanent Marker", cursive !important;
-    text-shadow: 2px 4px #871287 !important;
-    font-size: 20px !important;
-
-}
-.book-list{
-  margin:20px;
-}
-.book-list ul{
-  padding:0;
-  list-style-type: none;
-}
-.book-list li{
-  /* ff01e0 */
-  background: #f7078c;
-  box-shadow: 1px 1px 10px #f7078c;
-  border-radius: 4px;
-  padding: 10px;
-  cursor: pointer;
-  margin: 15px 0;
-  opacity: 0.8;
-
-}
-.book-list li:hover{
-  opacity: 1;
-  box-shadow: 1px 1px 5px #ff01e0;
-
-  text-decoration: line-through;
-  transform: scale(1.05);
-  z-index: 5;
-
-}
-.book-list .title{
-  font-weight: bold;
-  color: #fff;
-  font-size: 1.2em;
-}
-.book-list .author{
+.author {
   font-size: 0.9em;
-  color:#ddd
+  color: #ddd
 }
 
-.empty{
-  margin :20px;
-  text-align: center;
+form {
+  padding: 20px;
 }
 
-form{
-  padding:20px;
-}
-input[type='text']{
+input[type='text'] {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
   margin: 6px 0;
   background: #29004cad;
-  color:#fff;
+  color: #fff;
   border: 0;
   outline: none;
   border: 3px solid #f7078c;
   border-radius: 10px;
   box-shadow: 1px 1px 20px #f7078c;
 }
-button[type='submit']{
+
+button[type='submit'] {
   margin: 10px auto;
   background: #29004cad;
   color: #eee;
@@ -135,8 +67,63 @@ button[type='submit']{
   border-radius: 10px;
   outline: none;
 }
-button[type='submit']:hover{
+
+button[type='submit']:hover {
   box-shadow: 1px 1px 20px #f7078c;
   cursor: pointer;
+}
 
+/* ------ SWEET ALERT ------ */
+
+.swal-overlay {
+  background-color: rgba(47, 25, 99, 0.885);
+}
+
+.swal-modal {
+  background-color: #190e5d;
+  border: 3px solid #f7078c;
+  box-shadow: 1px 1px 20px #f7078c;
+}
+
+.swal-title {
+  color: #fff !important;
+}
+
+.swal-text {
+  color: #fff !important;
+  padding-top: 15px;
+}
+
+.swal-content {
+  z-index: 10;
+  color: #fff !important;
+}
+
+.swal-button--confirm:hover {
+  background-color: #f7078c !important;
+  border: 1px solid #f7078c;
+  box-shadow: 1px 1px 5px #f7078c;
+}
+
+.swal-button--confirm {
+  padding: 11px 19px;
+  border-radius: 5px;
+  background-color: #f7078c;
+  font-size: 12px;
+  border: 1px solid #f7078c;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.swal-icon--success:after, .swal-icon--success:before, .swal-icon--success__hide-corners {
+  background: none;
+}
+
+/* SUCCESS ICON */
+
+.swal-icon--success {
+  border-color: #f7078c;
+}
+
+.swal-icon--success__line--long, .swal-icon--success__line--tip {
+  background-color: #f7078c !important;
 }
