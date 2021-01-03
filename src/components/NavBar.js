@@ -1,16 +1,44 @@
-import React, { useContext } from 'react'
-import { TodoContext } from '../contexts/TodoContext'
-import styles from './NavBar.module.css'
+import React, { useContext, useEffect } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { TodoContext } from "../contexts/TodoContext";
+import db from "../firebase";
+import styles from "./NavBar.module.css";
 
-const NavBar = () => {
-    const {todo} = useContext(TodoContext)
+const NavBar = (props) => {
+  const { todo } = useContext(TodoContext);
 
-    return (
-        <div className={styles.navbar}>
-            <h1>Galaxy TODO</h1>
-            <p>Currently you have {todo.length} TODOs</p>
+  const { signup, signout, userName, currentUser } = useAuth();
+
+  function handleSignUp(e) {
+    e.preventDefault();
+    signup();
+  }
+
+  function handleSignOut(e) {
+    e.preventDefault();
+    signout();
+  }
+
+  return (
+    <div className={styles.navbar}>
+      <div className={styles.authWrapper}>
+        <div className={styles.currentUsername}>
+          <p>User : {userName}</p>
         </div>
-    )
-}
+        {currentUser ? (
+          <button onClick={handleSignOut} className={styles.authButton}>
+            Sign out
+          </button>
+        ) : (
+          <button onClick={handleSignUp} className={styles.authButton}>
+            Sign up
+          </button>
+        )}
+      </div>
+      <h1>Galaxy TODO</h1>
+      <p>Currently you have {todo.length} TODOs</p>
+    </div>
+  );
+};
 
-export default NavBar
+export default NavBar;

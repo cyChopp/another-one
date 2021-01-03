@@ -14,7 +14,7 @@ const firebaseConfig = {
     appId: "1:607166379197:web:eed064981e17bce33eb3d4",
     measurementId: "G-23BTK94SKQ"
   };
-
 const db = firebase.initializeApp(firebaseConfig);
+export const authentication = firebase.auth;
 
 export default db;

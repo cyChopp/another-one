@@ -13,6 +13,7 @@ const TodoContextProvider = (props) => {
     console.log(todo);
     localStorage.setItem("todo", JSON.stringify(todo));
   }, [todo]);
+  
   return (
     <TodoContext.Provider value={{ todo, dispatch }}>
       {props.children}

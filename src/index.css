@@ -15,10 +15,10 @@ body {
 
 .App {
   background-color: #39007396;
-  margin: 50px auto;
+  margin: 20px auto;
   width: 90%;
   max-height: 100vh;
-  max-width: 800px;
+  max-width: 700px;
   color: #eee;
   background-position: center;
   background-repeat: no-repeat;
@@ -69,6 +69,8 @@ button[type='submit'] {
 }
 
 button[type='submit']:hover {
+  border: 3px solid #fafafa;
+
   box-shadow: 1px 1px 20px #f7078c;
   cursor: pointer;
 }
@@ -81,8 +83,8 @@ button[type='submit']:hover {
 
 .swal-modal {
   background-color: #190e5d;
-  border: 3px solid #f7078c;
-  box-shadow: 1px 1px 20px #f7078c;
+  border: 2px solid #f7078c;
+  box-shadow: 2px 1px 30px #f7078c;
 }
 
 .swal-title {

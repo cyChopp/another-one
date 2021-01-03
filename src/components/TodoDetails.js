@@ -21,13 +21,14 @@ const TodoDetails = (props, { todo }) => {
   const handleClick = () => {
     swal({
       title: "Did you complete this TODO?",
-      text: "You won't be able to revert this!",
       icon: "warning",
-      buttons: true,
+      buttons: ["No", "Yes"],
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        swal("Your TODO has been deleted!", {
+        swal({
+          title:"Well done!",
+          text:"Your TODO has been deleted!",
           icon: "success",
         });
 

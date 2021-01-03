@@ -1,6 +1,6 @@
 .bookList{
     padding: 50px;
-    max-height: 500px;
+    max-height: 400px;
     overflow-y: scroll;
   }
   .bookList::-webkit-scrollbar {
@@ -13,6 +13,7 @@
   }
   
   .bookList li {
+    border: 2px solid #f7078c;
     background: #f7078c;
     box-shadow: 1px 1px 10px #f7078c;
     border-radius: 4px;
@@ -23,8 +24,9 @@
   }
   
   .bookList li:hover {
-    opacity: 1;
-    box-shadow: 1px 1px 5px #ff01e0;
+    box-shadow: none;
+    border: 2px solid #f5f5f5;
+    box-shadow: 1px 1px 10px #f5f5f5;
     text-decoration: line-through;
     transform: scale(1.05);
     z-index: 5;

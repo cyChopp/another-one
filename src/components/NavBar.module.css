@@ -19,6 +19,30 @@
   .navbar p {
     color: #f7078c !important;
     font-family: "Permanent Marker", cursive !important;
-    text-shadow: 2px 4px #871287 !important;
     font-size: 20px !important;
+  }
+  .authWrapper{
+    display: flex;
+    justify-content:space-between
+  }
+  .authButton{
+    font-family: "Permanent Marker", cursive !important;
+    flex: 1;
+    margin-left: auto;
+    color: #c1bfbf;
+    font-weight: 900;
+    font-size: 25px;
+    background:none ;
+    border: none;
+    outline: none;
+  }
+  .authButton:hover{
+    text-shadow: 1px 1px 2px #fff !important;
+  }
+  .currentUsername{
+flex: 4;
+  }
+  .currentUsername p{
+    display: flex;
+
   }
