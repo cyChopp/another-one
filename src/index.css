@@ -11,6 +11,7 @@ body {
   background-size: cover;
   position: relative;
   overflow-y: hidden;
+
 }
 
 .App {
@@ -40,6 +41,7 @@ form {
 }
 
 input[type='text'] {
+  font-size: 20px;
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
@@ -49,8 +51,9 @@ input[type='text'] {
   border: 0;
   outline: none;
   border: 3px solid #f7078c;
-  border-radius: 10px;
+  border-radius: 6px;
   box-shadow: 1px 1px 20px #f7078c;
+  font-family: "Permanent Marker", cursive !important;
 }
 
 button[type='submit'] {
@@ -64,7 +67,8 @@ button[type='submit'] {
   padding: 6px 20px;
   display: block;
   border: 3px solid #f7078c;
-  border-radius: 10px;
+  border-radius: 6px;
+  padding: 10px 10px;
   outline: none;
 }
 

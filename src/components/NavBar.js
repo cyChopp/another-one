@@ -1,7 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { TodoContext } from "../contexts/TodoContext";
-import db from "../firebase";
 import styles from "./NavBar.module.css";
 
 const NavBar = (props) => {

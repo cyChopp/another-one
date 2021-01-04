@@ -6,9 +6,9 @@ import TodoForm from "./components/TodoForm";
 import { connect } from "react-redux";
 
 import { setTodoDeleted } from "./redux/confetti-reducer";
-import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import { AuthProvider } from "./contexts/AuthContext";
 
-function App(props) {
+function App() {
 
 
   return (
