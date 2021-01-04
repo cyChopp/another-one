@@ -10,8 +10,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
-  const [userName, setUserName] = useState();
-  const [todos,setTodos] = useState()
+  const [userName, setUserName] = useState('Anonymous');
 
   function signup() {
 
@@ -26,7 +25,7 @@ export function AuthProvider({ children }) {
     db.auth()
       .signOut()
       .then(() => {
-        setUserName("");
+        setUserName("Anonymous");
         setCurrentUser("")
       })
       .catch((error) => {
@@ -39,16 +38,10 @@ export function AuthProvider({ children }) {
       if (user) {
         setCurrentUser(user);
         setUserName(user.displayName);
-
-        // db.firestore().collection('tasks').orderBy("timestamp", "desc")
-        // .onSnapshot((snapshot) => {
-        //   console.log(snapshot.docs.map((doc) => (doc.data())))
-        //   setTodos(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        // });
       }
     });
     return unsubscribe;
-  }, []);
+  }, [currentUser]);
 
   const value = {
     currentUser,

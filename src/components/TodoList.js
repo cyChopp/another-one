@@ -11,7 +11,6 @@ const TodoList = (props) => {
   const { todo, authTodos } = useContext(TodoContext);
   const { currentUser } = useAuth();
 
-  console.log(authTodos, "authTOOS");
 
 
   return (
@@ -22,13 +21,11 @@ const TodoList = (props) => {
           {currentUser ? (
             authTodos &&
             authTodos.map((todo) => {
-              console.log(todo.todoId, "current IDDDDD");
               return <TodoDetails todo={todo} key={todo.id} isAuth={true} />;
             })
           ) :
            !currentUser ? (
             todo.map((todo) => {
-              console.log(todo.todo);
               return <TodoDetails todo={todo} key={todo.id} isAuth={false} />;
             })
           ) : (

@@ -28,6 +28,10 @@
     border: 2px solid #f5f5f5;
     box-shadow: 1px 1px 10px #f5f5f5;
     text-decoration: line-through;
+    text-decoration-thickness: 4px;
+    text-decoration-color:#c90671;
+/* 29004c79*/
+
     transform: scale(1.05);
     z-index: 5;
   }

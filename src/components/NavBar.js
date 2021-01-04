@@ -4,8 +4,8 @@ import { TodoContext } from "../contexts/TodoContext";
 import styles from "./NavBar.module.css";
 
 const NavBar = (props) => {
-  const { todo } = useContext(TodoContext);
 
+  const { todo,authTodos } = useContext(TodoContext);
   const { signup, signout, userName, currentUser } = useAuth();
 
   function handleSignUp(e) {
@@ -17,6 +17,8 @@ const NavBar = (props) => {
     e.preventDefault();
     signout();
   }
+
+  console.log(authTodos.length,'LENGTH')
 
   return (
     <div className={styles.navbar}>
@@ -35,7 +37,7 @@ const NavBar = (props) => {
         )}
       </div>
       <h1>Galaxy TODO</h1>
-      <p>Currently you have {todo.length} TODOs</p>
+      <p>Currently you have {currentUser ? (authTodos.length) : (todo.length)} TODOs</p>
     </div>
   );
 };

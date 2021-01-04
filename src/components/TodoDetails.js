@@ -42,6 +42,8 @@ const TodoDetails = (props) => {
         if(currentUser) {
           db.firestore()
           .collection("tasks")
+          .doc(currentUser.uid)
+          .collection('todos')
           .doc(props.todo.todoId)
           .delete();
         }else{
@@ -52,7 +54,6 @@ const TodoDetails = (props) => {
     });
     props.setTodoDeleted(false);
   };
-  console.log(props.todo.id,"UUID")
   return (
     <li onClick={handleClick}>
       <div className={styles.title}>{props.isAuth ? props.todo.todo : props.todo.title}</div>

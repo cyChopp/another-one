@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useReducer, useState } from "react";
 import db from "../firebase";
 import { todoReducer } from "../reducers/todoReducer";
+import { useAuth } from "./AuthContext";
 
 export const TodoContext = createContext();
 
@@ -10,24 +11,26 @@ const TodoContextProvider = (props) => {
     return localData ? JSON.parse(localData) : [];
   });
 
-  const [authTodos, setAuthTodos] = useState();
+  const [authTodos, setAuthTodos] = useState([]);
+  const { currentUser } = useAuth();
+
 
   useEffect(() => {
     db.auth().onAuthStateChanged(function (user) {
       if (user) {
         db.firestore()
           .collection("tasks")
+          .doc(user.uid)
+          .collection('todos')
           .orderBy("timestamp", "desc")
           .onSnapshot((snapshot) => {
-            console.log(snapshot.docs.map((doc) => doc.data(), "ASYNC"));
             setAuthTodos(snapshot.docs.map((doc) =>({ ...doc.data(), todoId: doc.id})));
           });
       } else {
-        console.log(todo, "no auth todos");
         localStorage.setItem("todo", JSON.stringify(todo));
       }
     });
-  }, [todo]);
+  }, [todo,currentUser]);
 
   return (
     <TodoContext.Provider value={{ todo, dispatch, authTodos }}>

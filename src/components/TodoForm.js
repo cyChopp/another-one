@@ -21,7 +21,7 @@ const TodoForm = () => {
     e.preventDefault();
 
     if (currentUser) {
-      db.firestore().collection("tasks").doc().set({
+      db.firestore().collection("tasks").doc(currentUser.uid).collection('todos').add({
         todo: title,
         timestamp: time,
         id: uuidv4(),
