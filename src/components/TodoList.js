@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { TodoContext } from "../contexts/TodoContext";
 import db from "../firebase";
@@ -11,6 +11,15 @@ const TodoList = (props) => {
   const { todo, authTodos } = useContext(TodoContext);
   const { currentUser } = useAuth();
 
+  const messagesEndRef = useRef(null)
+
+ const todoScroll = ()=>{
+  messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+
+}
+
+useEffect( todoScroll,[todo]);
+useEffect( todoScroll,[authTodos]);
 
 
   return (
@@ -20,14 +29,19 @@ const TodoList = (props) => {
           {currentUser ? (
             authTodos &&
             authTodos.map((todo) => {
-              return <TodoDetails todo={todo} key={authTodos.todoId} isAuth={true} />;
+              return (
+                <>
+                <TodoDetails todo={todo} key={authTodos.todoId} isAuth={true} />
+                <div ref={messagesEndRef} />
+                </>
+              )
             })
           ) :
            !currentUser ? (
             todo.map((todo) => {
               return (<>
                <TodoDetails todo={todo} key={todo.id} isAuth={false} /> 
-               
+               <div ref={messagesEndRef} />
                </>);
             })
           ) : (

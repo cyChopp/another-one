@@ -15,7 +15,8 @@ const TodoForm = () => {
 
   const [title, setTitle] = useState("");
 
-  const dummy = useRef()
+   const dummy = useRef()
+
 
 
   const hungleSubmit = (e) => {
@@ -27,10 +28,9 @@ const TodoForm = () => {
         time: firebase.firestore.FieldValue.serverTimestamp(),
         id: uuidv4(),
       });
-      
-      dummy.current.scrollIntoView({ behavior: "smooth" });
-
       setTitle("");
+
+
 
     } else {
       if (title !== "") {
