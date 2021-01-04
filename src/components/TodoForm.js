@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { TodoContext } from "../contexts/TodoContext";
 import db from "../firebase";
 import styles from "./TodoForm.module.css";
 import moment from "moment";
+import firebase from 'firebase/app'
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -13,9 +14,9 @@ const TodoForm = () => {
   const { currentUser } = useAuth();
 
   const [title, setTitle] = useState("");
-  const [time, setTime] = useState(
-    moment(Date().toLocaleString()).format("Do hh:mm:ss a YYYY")
-  );
+
+  const dummy = useRef()
+
 
   const hungleSubmit = (e) => {
     e.preventDefault();
@@ -23,9 +24,12 @@ const TodoForm = () => {
     if (currentUser) {
       db.firestore().collection("tasks").doc(currentUser.uid).collection('todos').add({
         todo: title,
-        timestamp: time,
+        time: firebase.firestore.FieldValue.serverTimestamp(),
         id: uuidv4(),
       });
+      
+      dummy.current.scrollIntoView({ behavior: "smooth" });
+
       setTitle("");
 
     } else {

@@ -22,7 +22,7 @@ const TodoContextProvider = (props) => {
           .collection("tasks")
           .doc(user.uid)
           .collection('todos')
-          .orderBy("timestamp", "desc")
+          .orderBy("time","asc")
           .onSnapshot((snapshot) => {
             setAuthTodos(snapshot.docs.map((doc) =>({ ...doc.data(), todoId: doc.id})));
           });

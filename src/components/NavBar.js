@@ -18,7 +18,6 @@ const NavBar = (props) => {
     signout();
   }
 
-  console.log(authTodos.length,'LENGTH')
 
   return (
     <div className={styles.navbar}>

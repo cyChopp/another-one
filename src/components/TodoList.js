@@ -15,27 +15,27 @@ const TodoList = (props) => {
 
   return (
     <>
-      {/* {authTodos ? (  */}
       <div className={styles.bookList}>
         <ul>
           {currentUser ? (
             authTodos &&
             authTodos.map((todo) => {
-              return <TodoDetails todo={todo} key={todo.id} isAuth={true} />;
+              return <TodoDetails todo={todo} key={authTodos.todoId} isAuth={true} />;
             })
           ) :
            !currentUser ? (
             todo.map((todo) => {
-              return <TodoDetails todo={todo} key={todo.id} isAuth={false} />;
+              return (<>
+               <TodoDetails todo={todo} key={todo.id} isAuth={false} /> 
+               
+               </>);
             })
           ) : (
             <div className={styles.empty}>Nothing to do...</div>
           )}
         </ul>
       </div>
-      {/* ) : (
-        
-      )} */}
+
     </>
   );
 };
