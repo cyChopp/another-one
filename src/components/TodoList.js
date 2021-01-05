@@ -11,16 +11,19 @@ const TodoList = (props) => {
   const { todo, authTodos } = useContext(TodoContext);
   const { currentUser } = useAuth();
 
-  const messagesEndRef = useRef(null)
+  // const dummy = useRef();
+  const messagesEndRef = useRef();
 
- const todoScroll = ()=>{
-  messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+  const todoScroll = () => {
+   return messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+  };
 
-}
+  // const dummyRef = () => {
+  //   return dummy.current.scrollIntoView({ behavior: "smooth" });
+  // };
 
-useEffect( todoScroll,[todo]);
-useEffect( todoScroll,[authTodos]);
-
+  // useEffect(todoScroll, []);
+  // useEffect( todoScroll,[authTodos]);
 
   return (
     <>
@@ -31,27 +34,63 @@ useEffect( todoScroll,[authTodos]);
             authTodos.map((todo) => {
               return (
                 <>
-                <TodoDetails todo={todo} key={authTodos.todoId} isAuth={true} />
-                <div ref={messagesEndRef} />
+                  <TodoDetails
+                    todo={todo}
+                    key={authTodos.todoId}
+                    isAuth={true}
+                  />
+                  <div ref={messagesEndRef} />
                 </>
-              )
+              );
             })
-          ) :
-           !currentUser ? (
+          ) : !currentUser ? (
             todo.map((todo) => {
-              return (<>
-               <TodoDetails todo={todo} key={todo.id} isAuth={false} /> 
-               <div ref={messagesEndRef} />
-               </>);
+              return (
+                <>
+                  <TodoDetails
+                    todo={todo}
+                    key={todo.id}
+                    isAuth={false}
+                  />
+                  <div ref={messagesEndRef} />
+                </>
+              );
             })
           ) : (
             <div className={styles.empty}>Nothing to do...</div>
           )}
         </ul>
       </div>
-
     </>
   );
 };
 
 export default TodoList;
+
+{
+  /* <div className={styles.bookList}>
+<ul>
+  {currentUser ? (
+    authTodos &&
+    authTodos.map((todo) => {
+      return (
+        <>
+        <TodoDetails todo={todo} key={authTodos.todoId} isAuth={true} />
+        <div ref={messagesEndRef} />
+        </>
+      )
+    })
+  ) :
+   !currentUser ? (
+    todo.map((todo) => {
+      return (<>
+       <TodoDetails todo={todo} key={todo.id} isAuth={false} /> 
+       <div ref={messagesEndRef} />
+       </>);
+    })
+  ) : (
+    <div className={styles.empty}>Nothing to do...</div>
+  )}
+</ul>
+</div> */
+}

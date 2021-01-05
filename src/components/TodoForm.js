@@ -25,13 +25,10 @@ const TodoForm = () => {
     if (currentUser) {
       db.firestore().collection("tasks").doc(currentUser.uid).collection('todos').add({
         todo: title,
-        time: firebase.firestore.FieldValue.serverTimestamp(),
+        time: moment(Date().toLocaleString()).format("Do hh:mm:ss a YYYY"),
         id: uuidv4(),
       });
       setTitle("");
-
-
-
     } else {
       if (title !== "") {
         dispatch({ type: "ADD_TODO", todo: { title } });

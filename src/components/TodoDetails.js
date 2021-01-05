@@ -22,6 +22,7 @@ const TodoDetails = (props) => {
   const { currentUser } = useAuth();
 
 
+
   const handleClick = () => {
     swal({
       title: "Did you complete this TODO?",
@@ -36,7 +37,6 @@ const TodoDetails = (props) => {
           icon: "success",
         });
 
-        props.setTodoDeleted(true);
 
         // playActive();
         if(currentUser) {
@@ -52,11 +52,11 @@ const TodoDetails = (props) => {
         }
       }
     });
-    props.setTodoDeleted(false);
   };
+
   return (
     <li onClick={handleClick}>
-      <div className={styles.title}>{props.isAuth ? props.todo.todo : props.todo.title}</div>
+      <div className={styles.title}>{props.isAuth ? props.todo.todo : props.todo.title}</div><span></span>
     </li>
   );
 };
