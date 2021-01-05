@@ -11,19 +11,9 @@ const TodoList = (props) => {
   const { todo, authTodos } = useContext(TodoContext);
   const { currentUser } = useAuth();
 
-  // const dummy = useRef();
   const messagesEndRef = useRef();
 
-  const todoScroll = () => {
-   return messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
-  };
-
-  // const dummyRef = () => {
-  //   return dummy.current.scrollIntoView({ behavior: "smooth" });
-  // };
-
-  // useEffect(todoScroll, []);
-  // useEffect( todoScroll,[authTodos]);
+ 
 
   return (
     <>
@@ -39,7 +29,6 @@ const TodoList = (props) => {
                     key={authTodos.todoId}
                     isAuth={true}
                   />
-                  <div ref={messagesEndRef} />
                 </>
               );
             })
@@ -52,7 +41,6 @@ const TodoList = (props) => {
                     key={todo.id}
                     isAuth={false}
                   />
-                  <div ref={messagesEndRef} />
                 </>
               );
             })
